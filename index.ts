@@ -1,13 +1,16 @@
 import { initDB } from "./db/init";
 import { getAllMovies, getAllTitulos, getMovieById } from "./models/movies";
+import express from "express"
+const app = express();
+const PORT = 3000
 
-const db = await initDB()
+const db = await initDB();
+app.get("/movies", (req, res) => {
+    const peli = getAllMovies(db)
+    res.json(peli)
+})
 
-//const peliculass = getAllMovies(db)
-//console.log(peliculass)
+app.listen(PORT, ()=>{
+    console.log(`Servidor funcionando en puerto ${PORT}`)
+})
 
-//const peliculaId = getMovieById(db, 1)
-//console.log(peliculaId)
-
-const peliculaTitulo = getAllTitulos(db, "Toy")
-console.log(peliculaTitulo)
