@@ -1,5 +1,5 @@
 import { initDB } from "./db/init";
-import { getAllMovies, getAllTitulos, getMovieById } from "./models/movies";
+import { getMovies } from "./models/movies";
 import express from "express"
 import type { Request, Response, NextFunction } from "express"
 const app = express();
@@ -17,16 +17,13 @@ const logMiddleware = (req: Request, res: Response, next: NextFunction) => {
 app.use(logMiddleware)
 
 app.get("/movies", (req, res) => {
-    const nombre = req.query.title
-    if (nombre) {
-    console.log("Estoy dentro del endpoint",nombre)
-    const peli = getAllTitulos(db,nombre)
-    res.json(peli)
+    const {nombre, genero} = req.query
+    const filters = {
+        nombre: typeof nombre === "string" ? nombre: undefined,
+        genero: typeof genero === "string" ? genero: undefined
     }
-    else {
-        const peli = getAllMovies(db)
-        res.json(peli)
-    }
+    const movies = getMovies(db, filters)
+    res.json(movies)
 })
 
 app.listen(PORT, ()=>{
