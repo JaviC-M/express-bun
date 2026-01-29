@@ -1,30 +1,23 @@
-const str = "hola mundo"
-const n = 123
+const str1:string= "hola mundo"
+const n:number =123
 
-console.log(str, typeof str)
-console.log(n, typeof n)
+function suma(a:number,b:number ){
 
-const str1: string = "hola mundo"
-const n1: number = 1234
-const b1: boolean = true
-console.log(n1, typeof n1)
+return a+b;
+}
+console.log(suma(1,2))
 
-function suma(a: number, b: number) {
-    return a + b
+function saludo(nombre:string,edad:number,favorita:string):string{
+    return `Hola soy ${nombre}, tengo ${edad} años y mi cosa favorita es : ${favorita}`
 }
 
-console.log(suma(1, 2), typeof suma(1, 2))
+console.log(saludo("pablo",21,"javi ariza"))
 
-function saludo(nombre: string, edad: number, favorita: string) {
-    return `hola soy ${nombre}, tengo ${edad}, y mi cosa favorita es ${favorita}`
-}
+type generoTipo ="Masculino"| "Femenino" | "LadyBoy"
 
-console.log(saludo(`javi`, 20, `Ordenadores`))
+function generarUsuario(){
+    const nombre :string= "user" + Math.floor(Math.random() * 999)
+    const genero :generoTipo="LadyBoy"
+    return {nombre,genero}
 
-type generoTipo = "Masculino" | "Femenino" | "Otro"
-
-function generarUsuario() {
-    const nombre: string = "user" + Math.floor(Math.random() * 999)
-    const genero: generoTipo = "Masculino"
-    return { nombre, genero }
 }

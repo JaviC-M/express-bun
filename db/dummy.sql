@@ -1,6 +1,9 @@
-INSERT INTO peliculas (nombre, genero) VALUES
-('test', 'test'),
-('The Matrix', 'Sci-fiction'),
-('Evangelion', 'Romantic'),
-('Fate', 'Drama');
 
+
+INSERT INTO movies (nombre,genre ) VALUES 
+("test","test"),
+("The Matrix","Scifi,Action"),
+("Cars","animation"),
+("Nemo","animation"),
+("Bee movie", "Bzz , Bzz")
+;

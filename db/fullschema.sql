@@ -1,20 +1,23 @@
-DROP TABLE IF EXISTS peliculas;
-CREATE TABLE peliculas(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    nombre TEXT NOT NULL,
-    genero TEXT NOT NULL,
-    created_at DATATIME DEFAULT CURRENT_TIMESTAMP
+DROP TABLE IF EXISTS movies;
+
+CREATE TABLE movies (
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+nombre TEXT NOT NULL,
+genre TEXT NOT NULL,
+created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO peliculas (nombre, genero) VALUES
-('test', 'test'),
-('The Matrix', 'Sci-fiction'),
-('Evangelion', 'Romantic'),
-('Fate', 'Drama');
+INSERT INTO movies (nombre,genre ) VALUES 
+("test","test"),
+("The Matrix","Scifi,Action"),
+("Cars","animation"),
+("Nemo","animation")
+;
 
-UPDATE peliculas
-SET nombre = 'pelicula', genero = 'generos'
+update movies
+
+SET nombre="pelicula",genre="generos"
 WHERE id=1;
 
-DELETE FROM peliculas
+DELETE FROM movies
 WHERE id=1;

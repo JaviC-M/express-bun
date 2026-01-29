@@ -1,20 +1,26 @@
-import { Database } from "bun:sqlite"
-const schema = await Bun.file("./movies.sql").text()
-
-const db = new Database("movies.db")
-db.run(schema)
-
-const select = db.query("SELECT * FROM peliculas")
-const movies = select.all()
-
 const express = require("express")
+
 const PORT = 3000
 const app = express();
-
 app.use(express.static("public"))
 
-app.get("/movies", (req, res) => {
+import {Database} from "bun:sqlite";
+
+const squema = await Bun.file("./movies.sql").text()
+console.log(squema)
+
+const db = new Database("movies.db")
+
+db.run(squema)
+
+const select = db.query("SELECT * FROM movies")
+
+const movies = select.all()
+
+
+app.get("/movies", (req,res)=>{
     res.json(movies)
+
 })
 
-app.listen(PORT, () => console.log("Servidor funcionando en el puerto 3000"));
+app.listen(PORT, () => console.log("MAETLO CHEN"))
